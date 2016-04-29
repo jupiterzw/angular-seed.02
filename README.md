@@ -9,9 +9,13 @@ angular-seed.01续篇
 创建karma.cmd文件，内容如下：
 
 @IF EXIST "%~dp0\node.exe" (
+
   "%~dp0\node.exe"  "%~dp0\node_modules\karma\bin\karma" %*
+  
 ) ELSE (
+
   node  "%~dp0\node_modules\karma\bin\karma" %*
+  
 )
 
 # 测试是否安装成功
