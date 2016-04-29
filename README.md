@@ -87,16 +87,23 @@ D:\Program Files\nodejs>npm install karma-jasmine
 有一个需求，要实现单词倒写的功能。如：”ABCD” ==> “DCBA”
 
 function reverse(name){
+
     return name.split("").reverse().join("");
+    
 }
 
 2). 创建测试文件：符合jasmineAPI的测试js脚本
 
 describe("A suite of basic functions", function() {
+
     it("reverse word",function(){
+    
         expect("DCBA").toEqual(reverse("ABCD"));
+        
         expect("onan").toEqual(reverse("nano"));
+        
     });
+    
 });
 
 3). 修改karma.conf.js配置文件
@@ -104,20 +111,35 @@ describe("A suite of basic functions", function() {
 我们这里需要修改：files和exclude变量
 
 module.exports = function (config) {
+
     config.set({
+    
         basePath: '',
+        
         frameworks: ['jasmine'],
+        
         files: ['*.js'],
+        
         exclude: ['karma.conf.js'],
+        
         reporters: ['progress'],
+        
         port: 9876,
+        
         colors: true,
+        
         logLevel: config.LOG_INFO,
+        
         autoWatch: true,
+        
         browsers: ['Chrome'],
+        
         captureTimeout: 60000,
+        
         singleRun: false
+        
     });
+    
 };
 
 启动karma
@@ -133,10 +155,15 @@ D:\Program Files\nodejs>npm install karma-coverage
 修改karma.conf.js配置文件
 
 reporters: ['progress','coverage'],
+
 preprocessors : {'src.js': 'coverage'},
+
 coverageReporter: {
+
     type : 'html',
+    
     dir : 'coverage/'
+    
 }
 
 启动karma start，在工程目录下面找到index.html文件，D:/Program Files/nodejs/coverage/chrome/index.html
@@ -148,8 +175,11 @@ coverageReporter: {
 接下来，我们修改src.js，增加一个if分支
 
 function reverse(name){
+
     if(name=='AAA') return "BBB";
+    
     return name.split("").reverse().join("");
+    
 }
 
 再看src.js的覆盖率报告
